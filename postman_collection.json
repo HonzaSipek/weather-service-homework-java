@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "d6c92f7e-0c1e-4fd7-9280-3e6406e2aff2",
+		"name": "weather-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get temperatures for city (Checkpoint 1)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities/ostrava/temperatures",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities",
+						"ostrava",
+						"temperatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get temperatures for all cities (Checkpoint 1)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create city (Checkpoint 2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Olomouc"
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create already created city (Checkpoint 2)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Ostrava"
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get temperatures for new city (Checkpoint 2)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities/olomouc/temperatures",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities",
+						"olomouc",
+						"temperatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get temperatures for not existing city (Checkpoint 2)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities/zlin/temperatures",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities",
+						"zlin",
+						"temperatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add new temperature (Checkpoint 3)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"date\": \"2019-05-06\",\n\t\"value\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities/ostrava/temperatures",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities",
+						"ostrava",
+						"temperatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add already existing temperature (Checkpoint 3)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"date\": \"2017-09-19\",\n\t\"value\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities/ostrava/temperatures",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities",
+						"ostrava",
+						"temperatures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add temperature for non-existing city (Checkpoint 3)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"date\": \"2017-09-19\",\n\t\"value\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/weather/cities/zlin/temperatures",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"weather",
+						"cities",
+						"zlin",
+						"temperatures"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
