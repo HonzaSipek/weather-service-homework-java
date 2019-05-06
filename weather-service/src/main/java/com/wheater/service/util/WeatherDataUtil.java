@@ -21,7 +21,7 @@ import java.util.stream.Stream;
  */
 public class WeatherDataUtil {
 
-    private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    public static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     private static final TypeReference<Map<String, List<Map<String, List<Map<String, Integer>>>>>> TYPE_REFERENCE
             = new TypeReference<Map<String, List<Map<String, List<Map<String, Integer>>>>>>() {

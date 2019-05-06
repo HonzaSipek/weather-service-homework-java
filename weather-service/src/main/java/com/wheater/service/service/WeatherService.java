@@ -3,6 +3,7 @@ package com.wheater.service.service;
 import com.wheater.service.dto.CityDto;
 import com.wheater.service.dto.TemperatureDto;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -27,7 +28,17 @@ public interface WeatherService {
 
     /**
      * Create city with empty temperature list.
+     *
      * @param cityName city name
      */
     void createCity(String cityName);
+
+    /**
+     * Added maximum daily temperature for specific city.
+     *
+     * @param cityName city name
+     * @param date     date
+     * @param value    temperature integer value
+     */
+    void addMaxDailyTemperature(String cityName, LocalDate date, Integer value);
 }

@@ -43,9 +43,28 @@ public class WeatherEndpoint {
         return this.weatherService.getMaxDailyTemperatures(city);
     }
 
+    /**
+     * Create new city.
+     *
+     * @param city city name
+     * @return all cities with their daily maximum temperatures.
+     */
     @PostMapping(value = "/cities")
     public List<CityDto> createCity(@RequestBody String city) {
         this.weatherService.createCity(city);
         return this.weatherService.getMaxDailyTemperaturesForAllCities();
+    }
+
+    /**
+     * Add new temperature for specific city-
+     *
+     * @param city        city name
+     * @param temperature maximum daily temperature
+     * @return all maximum daily temperatures for specific city
+     */
+    @PostMapping(value = "/cities/{city}/temperatures")
+    public List<TemperatureDto> addTemperature(@PathVariable("city") String city, @RequestBody TemperatureDto temperature) {
+        this.weatherService.addMaxDailyTemperature(city, temperature.getDate(), temperature.getValue());
+        return this.weatherService.getMaxDailyTemperatures(city);
     }
 }
