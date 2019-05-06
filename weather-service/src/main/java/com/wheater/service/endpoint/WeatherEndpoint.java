@@ -4,10 +4,7 @@ import com.wheater.service.dto.CityDto;
 import com.wheater.service.dto.TemperatureDto;
 import com.wheater.service.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,5 +41,11 @@ public class WeatherEndpoint {
     @GetMapping(value = "/cities/{city}/temperatures")
     public List<TemperatureDto> getMaxDailyTemperaturesForCity(@PathVariable("city") String city) {
         return this.weatherService.getMaxDailyTemperatures(city);
+    }
+
+    @PostMapping(value = "/cities")
+    public List<CityDto> createCity(@RequestBody String city) {
+        this.weatherService.createCity(city);
+        return this.weatherService.getMaxDailyTemperaturesForAllCities();
     }
 }

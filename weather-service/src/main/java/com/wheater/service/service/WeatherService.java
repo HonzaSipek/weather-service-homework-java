@@ -24,4 +24,10 @@ public interface WeatherService {
      * @return maximum daily temperatures
      */
     List<TemperatureDto> getMaxDailyTemperatures(String city);
+
+    /**
+     * Create city with empty temperature list.
+     * @param cityName city name
+     */
+    void createCity(String cityName);
 }

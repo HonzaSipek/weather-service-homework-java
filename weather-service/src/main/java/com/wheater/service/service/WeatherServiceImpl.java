@@ -2,6 +2,8 @@ package com.wheater.service.service;
 
 import com.wheater.service.dto.CityDto;
 import com.wheater.service.dto.TemperatureDto;
+import com.wheater.service.exception.AlreadyCreatedCityException;
+import com.wheater.service.exception.CityNotFoundException;
 import com.wheater.service.exception.WeatherDataException;
 import com.wheater.service.util.WeatherDataUtil;
 import org.springframework.lang.NonNull;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -30,11 +34,20 @@ public class WeatherServiceImpl implements WeatherService {
 
     @Override
     public List<TemperatureDto> getMaxDailyTemperatures(@NonNull String cityName) {
-        return maxDailyTemperatures.stream()
+        return this.maxDailyTemperatures.stream()
                 .filter(city -> city.getName().equalsIgnoreCase(cityName))
                 .findFirst()
                 .map(CityDto::getMaxDailyTemperatures)
-                .orElseGet(ArrayList::new);
+                .orElseThrow(() -> new CityNotFoundException(String.format("City with name: %s could not be found", cityName)));
+
+    }
+
+    @Override
+    public void createCity(String cityName) {
+        if(this.maxDailyTemperatures.stream().anyMatch(city -> city.getName().equalsIgnoreCase(cityName))){
+            throw new AlreadyCreatedCityException(String.format("City with name: %s is already created", cityName));
+        }
+        this.maxDailyTemperatures.add(new CityDto(cityName.toLowerCase(), Collections.EMPTY_LIST));
     }
 
     /**
