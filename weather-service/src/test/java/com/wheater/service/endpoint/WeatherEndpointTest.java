@@ -34,12 +34,18 @@ public class WeatherEndpointTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    /**
+     * Checkpoint 1
+     */
     @Test
     public void getMaxDailyTemperaturesForAllCities_shouldReturnFourCities() {
-        List<CityDto> cities = restTemplate.exchange("/weather/cities/temperatures", HttpMethod.GET, null, CITIES_RESPONSE_TYPE).getBody();
+        List<CityDto> cities = restTemplate.exchange("/weather/cities", HttpMethod.GET, null, CITIES_RESPONSE_TYPE).getBody();
         assertEquals(4, cities.size());
     }
 
+    /**
+     * Checkpoint 1
+     */
     @Test
     public void getMaxDailyTemperaturesForAllCities_whenDataForCityAreAvailable_shouldReturnTemperatures() {
         List<TemperatureDto> temperatures = restTemplate.exchange("/weather/cities/ostrava/temperatures", HttpMethod.GET, null, TEMPERATURES_RESPONSE_TYPE).getBody();

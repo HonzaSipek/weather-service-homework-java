@@ -30,7 +30,7 @@ public class WeatherEndpoint {
      *
      * @return cities and their maximum daily temperatures
      */
-    @GetMapping(value = "/cities/temperatures")
+    @GetMapping(value = "/cities")
     public List<CityDto> getMaxDailyTemperaturesForAllCities() {
         return this.weatherService.getMaxDailyTemperaturesForAllCities();
     }
